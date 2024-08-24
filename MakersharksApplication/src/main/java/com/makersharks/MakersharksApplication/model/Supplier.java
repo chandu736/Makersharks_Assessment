@@ -1,5 +1,6 @@
 package com.makersharks.MakersharksApplication.model;
 
+// Importing necessary JPA and Java utility classes
 import java.util.Set;
 import java.util.UUID;
 import jakarta.persistence.CollectionTable;
@@ -13,82 +14,103 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 
-@Entity	
+/**
+ * The Supplier class represents a supplier entity in the system.
+ * It includes various attributes such as supplier ID, company name, website,
+ * location, nature of business, and manufacturing processes.
+ */
+@Entity
 public class Supplier {
-	
-	@Id
-	@GeneratedValue
-	@Column(length=36)
-	private UUID supplierId;
-	
-	@Column(nullable = false, length = 255)
-	private String companyName;
-	
-	@Column(length = 255)
-	private String website;
-	
-	@Column(nullable = false, length = 255)
-	private String location;
-	
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
-	private NatureOfBusiness natureOfBusiness;
-	
-	public enum NatureOfBusiness{
-		SMALL_SCALE, MEDIUM_SCALE, LARGE_SCALE
-	}
-	
+
+    // Unique identifier for each supplier, generated automatically
+    @Id
+    @GeneratedValue
+    @Column(length=36)
+    private UUID supplierId;
+
+    // Name of the company, mandatory field with a maximum length of 255 characters
+    @Column(nullable = false, length = 255)
+    private String companyName;
+
+    // Website of the company, optional field with a maximum length of 255 characters
+    @Column(length = 255)
+    private String website;
+
+    // Location of the supplier, mandatory field with a maximum length of 255 characters
+    @Column(nullable = false, length = 255)
+    private String location;
+
+    // Nature of the business, represented as an enumeration and stored as a string in the database
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private NatureOfBusiness natureOfBusiness;
+
+    /**
+     * Enumeration to represent the nature of business.
+     * It can be either SMALL_SCALE, MEDIUM_SCALE, or LARGE_SCALE.
+     */
+    public enum NatureOfBusiness {
+        SMALL_SCALE, MEDIUM_SCALE, LARGE_SCALE
+    }
+
+    // A set of manufacturing processes associated with the supplier
     private Set<ManufacturingProcess> manufacturingProcesses;
-	
-	public enum ManufacturingProcess {
-	    MOULDING, PRINTING_3D, COATING, CASTING
-	}
 
-	public UUID getSupplierId() {
-		return supplierId;
-	}
+    /**
+     * Enumeration to represent various manufacturing processes.
+     * The options include MOULDING, PRINTING_3D, COATING, and CASTING.
+     */
+    public enum ManufacturingProcess {
+        MOULDING, PRINTING_3D, COATING, CASTING
+    }
 
-	public void setSupplierId(UUID suplierId) {
-		this.supplierId = suplierId;
-	}
+    // Getters and setters for the fields
 
-	public String getCompanyName() {
-		return companyName;
-	}
+    public UUID getSupplierId() {
+        return supplierId;
+    }
 
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
+    public void setSupplierId(UUID supplierId) {
+        this.supplierId = supplierId;
+    }
 
-	public String getWebsite() {
-		return website;
-	}
+    public String getCompanyName() {
+        return companyName;
+    }
 
-	public void setWebsite(String website) {
-		this.website = website;
-	}
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public String getWebsite() {
+        return website;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public void setWebsite(String website) {
+        this.website = website;
+    }
 
-	public NatureOfBusiness getNatureOfBusiness() {
-		return natureOfBusiness;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public void setNatureOfBusiness(NatureOfBusiness natureOfBusiness) {
-		this.natureOfBusiness = natureOfBusiness;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public Set<ManufacturingProcess> getManufacturingProcesses() {
-		return manufacturingProcesses;
-	}
+    public NatureOfBusiness getNatureOfBusiness() {
+        return natureOfBusiness;
+    }
 
-	public void setManufacturingProcesses(Set<ManufacturingProcess> manufacturingProcesses) {
-		this.manufacturingProcesses = manufacturingProcesses;
-	}
+    public void setNatureOfBusiness(NatureOfBusiness natureOfBusiness) {
+        this.natureOfBusiness = natureOfBusiness;
+    }
+
+    public Set<ManufacturingProcess> getManufacturingProcesses() {
+        return manufacturingProcesses;
+    }
+
+    public void setManufacturingProcesses(Set<ManufacturingProcess> manufacturingProcesses) {
+        this.manufacturingProcesses = manufacturingProcesses;
+    }
 }
