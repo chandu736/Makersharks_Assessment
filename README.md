@@ -34,9 +34,9 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    mvn clean install
 ## API Endpoints
- -**Endpoint:** `/api/supplier/query` 
- -**Method:** `POST`
- -**Parameters:** 
+-**Endpoint:** `/api/supplier/query` 
+-**Method:** `POST`
+-**Parameters:** 
    -`location`: The location of the manufacturers.
    -`natureOfBusiness`: The nature of the business (SMALL_SCALE, MEDIUM_SCALE, LARGE_SCALE).
    -`manufacturingProcesses`: The manufacturing process (MOULDING, PRINTING_3D, COATING, CASTING).
